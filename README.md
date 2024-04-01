@@ -4,20 +4,20 @@
 > Es handelt sich hier nicht um eine offizielle API der TWINT AG.
 
 ## Was kann die API und was nicht?
-Mit Hilfe dieser API kann ein **bestehendes** Twint Prepaid-Konto mit einer eigenen Applikation verkn¸pft werden. Danach kˆnnen der aktuelle Kontostand sowie die letzten
-Transaktionen abgefragt werden. Auch das Senden von Geld an eine Mobiltelefonnummer ist mˆglich.
+Mit Hilfe dieser API kann ein **bestehendes** Twint Prepaid-Konto mit einer eigenen Applikation verkn√ºpft werden. Danach k√∂nnen der aktuelle Kontostand sowie die letzten
+Transaktionen abgefragt werden. Auch das Senden von Geld an eine Mobiltelefonnummer ist m√∂glich.
 
-Zur Zeit kann noch **kein neues** Twint Konto ¸ber die API erˆffnet werden. Die API funktioniert nur mit der Prepaid Variante, nicht mit Twint-Konten die direkt mit deinem Bankkonto verkn¸pft sind.
+Zur Zeit kann noch **kein neues** Twint Konto √ºber die API er√∂ffnet werden. Die API funktioniert nur mit der Prepaid Variante, nicht mit Twint-Konten die direkt mit deinem Bankkonto verkn√ºpft sind.
 
 > [!WARNING]
-> Nachdem du dein Twint-Konto mit deiner eigenen Applikation verkn¸pft hast, kanst du nicht mehr mit deinem Handy darauf zugreifen. Du kannst aber dein Konto jederzeit wieder mit der offiziellen Twint-App auf deinem Handy verkn¸pfen.
+> Nachdem du dein Twint-Konto mit deiner eigenen Applikation verkn√ºpft hast, kanst du nicht mehr mit deinem Handy darauf zugreifen. Du kannst aber dein Konto jederzeit wieder mit der offiziellen Twint-App auf deinem Handy verkn√ºpfen.
 
 ## Was ist im Repository enthalten?
-Das Repo enth‰lt eine VisualStudio Solution mit zwei Projekten: TwintApi ist eine Bibliothek welche den REST-API Client enth‰lt, WinTwint ist eine Beispielimplementation f¸r einen Twint Client unter Windows.
-Um die Beispiele zu erstellen, wird VisualStudio 2022 und .NET 8 benˆtigt.
+Das Repo enth√§lt eine VisualStudio Solution mit zwei Projekten: TwintApi ist eine Bibliothek welche den REST-API Client enth√§lt, WinTwint ist eine Beispielimplementation f√ºr einen Twint Client unter Windows.
+Um die Beispiele zu erstellen, wird VisualStudio 2022 und .NET 8 ben√∂tigt.
 
 ## Onboarding
-Um ein bestehendes Twint Prepaid-Konto zu verkn¸pfen, sind die folgenden Schritte notwendig. Diese m¸ssen nur einmal durchgef¸hrt werden.
+Um ein bestehendes Twint Prepaid-Konto zu verkn√ºpfen, sind die folgenden Schritte notwendig. Diese m√ºssen nur einmal durchgef√ºhrt werden.
 
 ```c#
 var _api = new TwintApi.TwintApi();
@@ -30,8 +30,8 @@ Im Hintergrund wird ein **GET** Request mit der Telefonnummer an folgende URL ge
 https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber?phoneNumber=%2B41791112233
 ```
 
-Das lˆst das Senden einer SMS mit einem Verifizierungscode an die angegebene Nummer aus.
-Mit dem ¸ber SMS empfangenen Code muss die Telefonnummer verifiziert werden:
+Das l√∂st das Senden einer SMS mit einem Verifizierungscode an die angegebene Nummer aus.
+Mit dem √ºber SMS empfangenen Code muss die Telefonnummer verifiziert werden:
 
 ```c#
 string tan = "12345";
@@ -47,8 +47,8 @@ https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber
 }
 ```
 
-Im n‰chsten Schritt muss auf dem Ger‰t eine zuf‰llige Ger‰te-Id, ein selbstsigniertes CA-Zertifikat und ein damit signiertes Signging-Zertifikat erstellt werden.
-ausserdem benˆtigen wir den PIN mit dem das bestehende Twint-Konto gesch¸tzt ist (im Beispiel unten 123456).
+Im n√§chsten Schritt muss auf dem Ger√§t eine zuf√§llige Ger√§te-Id, ein selbstsigniertes CA-Zertifikat und ein damit signiertes Signging-Zertifikat erstellt werden.
+ausserdem ben√∂tigen wir den PIN mit dem das bestehende Twint-Konto gesch√ºtzt ist (im Beispiel unten 123456). Die Zertifikate werden sp√§ter ben√∂tigt um Transaktionen zu signieren.
 
 ```c#
 byte[] randomBytes = new byte[8];
@@ -58,7 +58,7 @@ using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
 }
 string deviceId = BitConverter.ToString(randomBytes).Replace("-", string.Empty).ToLower();
 
-CertificateHelper.CreateCertificates("c:\\temp\\ca.crt", "c:\\temp\\sing.crt", "c:\\temp\\sing_with_pk.crt");
+CertificateHelper.CreateCertificates("c:\\temp\\ca.crt", "c:\\temp\\sing.crt", "c:\\temp\\sing_with_pk.pfx");
 
 string pin = "123456";
 
@@ -93,9 +93,9 @@ https://app.issuer.twint.ch/private/routing/v1/reboard
 }
 ```
 
-Man beachte, dass die Zertifikate (ohne privaten Schl¸ssel) base64-codiert im PEM Format angegeben werden. Beim "fingerprint" handelt es sich jeweils um den SHA256 Hash des ˆffentlichen Schl¸ssels.
+Man beachte, dass die Zertifikate (ohne privaten Schl√ºssel) base64-codiert im PEM Format angegeben werden. Beim "fingerprint" handelt es sich jeweils um den SHA256 Hash des √∂ffentlichen Schl√ºssels.
 
-Als Antwort erh‰lt man eine Datenstruktur, aus der wir uns die Werte f¸r **privateCustomerUuid**, **deviceUuid** und **devicePassword** merken m¸ssen:
+Als Antwort erh√§lt man eine Datenstruktur, aus der wir uns die Werte f√ºr **privateCustomerUuid**, **deviceUuid** und **devicePassword** merken m√ºssen:
 ```
 {
   "privateCustomerUuid": "89954CD1-6175-4E0B-94C4-2E7299D7002A",
@@ -106,7 +106,7 @@ Als Antwort erh‰lt man eine Datenstruktur, aus der wir uns die Werte f¸r **priva
 ```
 
 ## Login-Token
-Alle weiteren API Aufrufe benˆtigen eine Authorisierung mittels einem JWT-Token, welches im HTTP Bearer-Header ¸bergeben wird. Die im Kapitel **Onboarding** aufgef¸hrten Schritte m¸ssen bereits einmal ausgef¸hrt worden sein.
+Alle weiteren API Aufrufe ben√∂tigen eine Authorisierung mittels einem JWT-Token, welches im HTTP Bearer-Header √ºbergeben wird. Die im Kapitel **Onboarding** aufgef√ºhrten Schritte m√ºssen bereits einmal ausgef√ºhrt worden sein.
 
 ```c#
 string deviceId = "8b22a56369365885";
@@ -130,7 +130,7 @@ https://app.issuer.twint.ch/tokens/v2/jwt/privatecustomer/
 }
 ```
 
-In der Antwort erhalten wir ein JWT-Token welches f¸r alle weiteren API-Aufrufe benˆtigt wird:
+In der Antwort erhalten wir ein JWT-Token welches f√ºr alle weiteren API-Aufrufe ben√∂tigt wird:
 ```
 {
   "category": "CAT3A",
@@ -150,7 +150,137 @@ In der Antwort erhalten wir ein JWT-Token welches f¸r alle weiteren API-Aufrufe 
 ```
 
 ## Abfragen des Kontostandes
+Nachdem ein Login-Token erhalten wurde, kann der Kontostand folgendermassen abgefragt werden:
+
+```c#
+var response = await _api.GetBalance();
+```
+
+Der **GET** Request im Hintergrund (das JWT-Token muss im Bearer Header mitgesendet werden):
+```
+https://app.issuer.twint.ch/smartphone/service/v8/privateCustomers/account
+```
+
+Die Antwort enth√§lt den Kontostand:
+```
+{
+  "balance": {
+    "amount": 1,
+    "currency": "CHF"
+  },
+  "clientCategory": "CAT3A",
+  "language": "de",
+  "trackingEnabled": "NO"
+}
+```
 
 ## Abfragen der letzten Transaktionen
+Auch das Abfragen der Liste der Transaktionen ist erst m√∂glich nachdem ein Login-Token erhalten wurde:
+
+```c#
+var orders = await _api.GetOrders();
+```
+
+Optional kann das Ergebnis durch die Angabe eines Datums oder der maximalen Anzahl Transaktionen begrenzt werden.
+Der **GET** Request im Hintergrund:
+```
+https://app.scheme.twint.ch/smartphone/service/v26/orders?since=2024-01-01T00%3A00%3A00Z&limit=300
+```
+
+Die Antwort ist eine Datenstruktur, die im Element "entries" eine Liste von Transaktionen enth√§lt:
+```
+{
+  "entries": [
+    {
+      "ctlModTs": "2024-01-18T14:00:21Z",
+      "ctlCreTs": "2024-01-18T14:00:18Z",
+      "orderUuid": "C9F272E4-581F-40B7-BED5-6FB704F81513",
+      "sndPhaseTs": "2024-01-18T14:00:18Z",
+      "requestedAmount": 1,
+      "authorizedAmount": 1,
+      "paidAmount": 1,
+      "currency": "CHF",
+      "merchantConfirmation": false,
+      "orderType": "P2P_SEND_MONEY",
+      "orderState": "SUCCESSFUL",
+      "transactionSide": "CREDIT",
+      "p2pHasPicture": false,
+      "p2pSenderMobileNr": "+41791112233",
+      "p2pRecipientMobileNr": "+41791112233",
+      "p2pInitiateMessage": "Hello World!",
+      "p2pOrderWasResent": false,
+      "voucherType": "NONE",
+      "paymentAuthorizationType": "FINAL_AUTH",
+      "financialAccountId": "C6514730-8ADD-4BCC-A687-2AB5ED2DE549"
+    }
+  ],
+  "serverUpdateTime": "2024-01-18T14:00:23Z",
+  "pageToken": "",
+  "groups": []
+}
+```
 
 ## Senden von Geld
+Das Senden von Geld ben√∂tigt nat√ºrlich auch ein g√ºltiges Login-Token. Zus√§tzlich werden die Eckdaten der Transaktion mit dem Signing-Zertifikat signiert. Dadurch wird sichergestellt, dass niemand der sich in die verschl√ºsselte Verbindung eingeklinkt hat (man-in-the-middle) die Transaktion ver√§ndern kann.
+
+```c#
+decimal amount = 1.00;
+string message = "Hello World!";
+string receiverNumber = "+41791112233";
+string senderFirstName = "Globi";
+string senderLastName = "der Hacker";
+
+await App.Current.TwintApi.Send(
+    amount,
+    message,
+    "",
+    "",
+    receiverNumber,
+    senderFirstName,
+    senderLastName,
+    "c:\\temp\\sing_with_pk.pfx"
+);
+```
+
+Der **POST** Request im Hintergrund:
+
+```
+https://app.scheme.twint.ch/smartphone/service/v26/orders/p2p/send
+{
+  "amount": {
+    "amount": 0.5,
+    "currency": "CHF"
+  },
+  "certificateFingerprint": "faba991a730e2eefcccbd2e91f49805feb76d892bd1744437e91a3c58005136f",
+  "message": "‚ù§Ô∏è",
+  "moneyReceiver": {
+    "firstName": "",
+    "lastName": ""
+  },
+  "moneyReceiverMobileNumber": "+41791112233",
+  "moneySender": {
+    "firstName": "Globi",
+    "lastName": "der Hacker"
+  },
+  "orderUuid": "B9269911-F70A-4F97-96DD-3151F1148A8D",
+  "reservationDate": "2024-03-05T22:27:03",
+  "sendMoneyEvenIfCustomerUnknown": false,
+  "signature": "WW91IGFyZSBsZWV0LCBidXQgR2xvYmkgaXMgdG9vIQ=="
+}
+```
+**orderUuid** ist eine neue zuf√§llige GUID. **signature** wird berechnet, indem zuerst ein XML-String mit den Eckdaten der Transaktion erstellt wird:
+
+```XML
+<Amount>0.50</Amount><Currency>CHF</Currency><Operation>WITHDRAW</Operation><AuthorizationTimestamp>2024-03-05T22:27:03</AuthorizationTimestamp><OrderUuid>B9269911-F70A-4F97-96DD-3151F1148A8D</OrderUuid>
+```
+Dieser String wird danach in ein Byte-Array umgewandelt und mit dem privaten Schl√ºssel des Signing-Zertifikats signiert. Die Signatur wird dann base64 codiert.
+
+Hat alles geklappt, erh√§lt man den Status der Transaktion zur√ºck:
+
+```JSON
+{
+  "orderUuid": "B9269911-F70A-4F97-96DD-3151F1148A8D",
+  "orderState": "SUCCESSFUL",
+  "customerIsUnknownSendSMS": false
+}
+```
