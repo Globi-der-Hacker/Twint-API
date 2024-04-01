@@ -54,13 +54,13 @@ ausserdem benötigen wir den PIN mit dem das bestehende Twint-Konto geschützt i
 
 ```c#
 byte[] randomBytes = new byte[8];
-using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+u (RandomNumberGenerator rng = RandomNumberGenerator.Create())
 {
   rng.GetBytes(randomBytes);
 }
 string deviceId = BitConverter.ToString(randomBytes).Replace("-", string.Empty).ToLower();
 
-CertificateHelper.CreateCertificates("c:\\temp\\ca.crt", "c:\\temp\\sing.crt", "c:\\temp\\sing_with_pk.pfx");
+CertificateHelper.CreateCertificates("c:\\temp\\ca.crt", "c:\\temp\\sign.crt", "c:\\temp\\sign_with_pk.pfx");
 
 string pin = "123456";
 
@@ -70,8 +70,8 @@ var response = await _api.Reboard(
   pin,
   File.ReadAllText("c:\\temp\\ca.crt"),
   CertificateHelper.GetPublicKeyFingerprint("c:\\temp\\ca.crt"),
-  File.ReadAllText("c:\\temp\\sing.crt"),
-  CertificateHelper.GetPublicKeyFingerprint("c:\\temp\\sing.crt")
+  File.ReadAllText("c:\\temp\\sign.crt"),
+  CertificateHelper.GetPublicKeyFingerprint("c:\\temp\\sign.crt")
 );
 ```
 
@@ -245,7 +245,7 @@ await App.Current.TwintApi.Send(
     receiverNumber,
     senderFirstName,
     senderLastName,
-    "c:\\temp\\sing_with_pk.pfx"
+    "c:\\temp\\sign_with_pk.pfx"
 );
 ```
 
