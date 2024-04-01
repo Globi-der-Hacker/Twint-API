@@ -187,13 +187,14 @@ Auch das Abfragen der Liste der Transaktionen ist erst möglich nachdem ein Logi
 var orders = await _api.GetOrders();
 ```
 
-Optional kann das Ergebnis durch die Angabe eines Datums oder der maximalen Anzahl Transaktionen begrenzt werden.
+Optional kann das Ergebnis durch die Angabe eines Datums oder der maximalen Anzahl Transaktionen begrenzt werden. Wird nichts angegeben, werden maximal die letzten 300 Transaktionen zurückgegeben.
+
 Der **GET** Request im Hintergrund:
 ```
 https://app.scheme.twint.ch/smartphone/service/v26/orders?since=2024-01-01T00%3A00%3A00Z&limit=300
 ```
 
-Die Antwort ist eine Datenstruktur, die im Element "entries" eine Liste von Transaktionen enthält:
+Die Antwort ist eine Datenstruktur, die im Element "entries" ein Array von Transaktionen enthält:
 ```JSON
 {
   "entries": [
@@ -276,12 +277,12 @@ https://app.scheme.twint.ch/smartphone/service/v26/orders/p2p/send
   "signature": "WW91IGFyZSBsZWV0LCBidXQgR2xvYmkgaXMgdG9vIQ=="
 }
 ```
-**orderUuid** ist eine neue zufällige GUID. **signature** wird berechnet, indem zuerst ein XML-String mit den Eckdaten der Transaktion erstellt wird:
+**certificateFingerprint** ist der SHA256 Hash des öffentlichen Schlüssels des Signing-Zertifikats, als HEX-String formatiert. **orderUuid** ist eine neue zufällige GUID. **signature** wird berechnet, indem zuerst ein XML-String mit den Eckdaten der Transaktion erstellt wird:
 
 ```XML
 <Amount>0.50</Amount><Currency>CHF</Currency><Operation>WITHDRAW</Operation><AuthorizationTimestamp>2024-03-05T22:27:03</AuthorizationTimestamp><OrderUuid>B9269911-F70A-4F97-96DD-3151F1148A8D</OrderUuid>
 ```
-Dieser String wird danach in ein Byte-Array umgewandelt und mit dem privaten Schlüssel des Signing-Zertifikats signiert. Die Signatur wird dann base64 codiert.
+Dieser String wird in ein Byte-Array umgewandelt und mit dem privaten Schlüssel des Signing-Zertifikats signiert. Die Signatur wird dann base64 codiert.
 
 Hat alles geklappt, erhält man den Status der Transaktion zurück:
 
