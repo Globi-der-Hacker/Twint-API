@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="WinTwint.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinTwint"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="WinTwint"
+    mc:Ignorable="d">
+
+    <NavigationView x:Name="nvMain" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" SelectionChanged="nvMain_SelectionChanged">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Content="Registrierung" Tag="Registration">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE819;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem x:Name="nviTwint" Content="Twint" Tag="Twint">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE8C7;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem x:Name="nviInfo" Content="Info" Tag="Info">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE946;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+        </NavigationView.MenuItems>
+        <Frame x:Name="contentFrame"/>
+    </NavigationView>
+</Window>

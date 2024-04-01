@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WinTwint.SendPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinTwint"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded">
+
+    <StackPanel Orientation="Vertical" Margin="20" Spacing="10">
+        <TextBlock Text="Geld senden" Style="{StaticResource TitleTextBlockStyle}"/>
+
+        <Border BorderThickness="1" BorderBrush="LightGray" Background="#fafafa" CornerRadius="5" Padding="10">
+            <StackPanel Orientation="Vertical" Margin="20" HorizontalAlignment="Stretch" Spacing="5">
+                <TextBlock Text="Telefonnummer:" FontSize="18" Foreground="Black" />
+                <TextBox x:Name="txtNumber" Width="300" HorizontalAlignment="Left" MaxLength="20" TextChanging="txtNumber_TextChanging" TextChanged="txtNumber_TextChanged" />
+
+                <TextBlock Text="Betrag:" FontSize="18" Foreground="Black" Margin="0,10,0,0" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="txtAmount" Width="100" MaxLength="20" HorizontalAlignment="Left" TextChanging="txtAmount_TextChanging" />
+                    <TextBlock Text="CHF" FontSize="18" Foreground="Black" Margin="10,4,0,0" />
+                </StackPanel>
+
+                <TextBlock Text="Nachricht:" FontSize="18" Foreground="Black" Margin="0,10,0,0" />
+                <TextBox x:Name="txtMessage" HorizontalAlignment="Stretch" AcceptsReturn="true" />
+            </StackPanel>
+        </Border>
+
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <Button x:Name="btnCancel" Click="btnCancel_Click">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Glyph="&#xE830;" Margin="0,0,10,0" />
+                    <TextBlock Text="Zurück" />
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnSend" Click="btnSend_Click">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Glyph="&#xE724;" Margin="0,0,10,0" />
+                    <TextBlock Text="Senden" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</Page>

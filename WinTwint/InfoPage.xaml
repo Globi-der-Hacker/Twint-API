@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WinTwint.InfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinTwint"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Vertical" Margin="20" Spacing="10">
+        <TextBlock Text="Info" Style="{StaticResource TitleTextBlockStyle}"/>
+        <Border BorderThickness="1" BorderBrush="LightGray" Background="#fafafa" CornerRadius="5" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Phone number:" Grid.Column="0" Grid.Row="0" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="DeviceId:" Grid.Column="0" Grid.Row="1" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="DeviceUuid:" Grid.Column="0" Grid.Row="2" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="DevicePassword:" Grid.Column="0" Grid.Row="3" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="PIN:" Grid.Column="0" Grid.Row="4" Style="{StaticResource BodyTextBlockStyle}"/>
+
+                    <TextBlock x:Name="lblNumber" Grid.Column="1" Grid.Row="0" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock x:Name="lblDeviceId" Grid.Column="1" Grid.Row="1" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock x:Name="lblDeviceUuid" Grid.Column="1" Grid.Row="2" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock x:Name="lblDevicePassword" Grid.Column="1" Grid.Row="3" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock x:Name="lblPin" Grid.Column="1" Grid.Row="4" Style="{StaticResource BodyTextBlockStyle}"/>
+                </Grid>
+                <Grid Grid.Column="1" ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="CustomerUuid:" Grid.Column="0" Grid.Row="0" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="AccountId:" Grid.Column="0" Grid.Row="1" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="CA-Cer:" Grid.Column="0" Grid.Row="2" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="Signing-Cert:" Grid.Column="0" Grid.Row="3" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="Token:" Grid.Column="0" Grid.Row="4" Style="{StaticResource BodyTextBlockStyle}"/>
+
+                    <TextBlock x:Name="lblCustomerUuid" Grid.Column="1" Grid.Row="0" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock x:Name="lblAccountId" Grid.Column="1" Grid.Row="1" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock x:Name="lblCaCert" Grid.Column="1" Grid.Row="2" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock x:Name="lblSigningCert" Grid.Column="1" Grid.Row="3" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock x:Name="lblToken" Grid.Column="1" Grid.Row="4" Style="{StaticResource BodyTextBlockStyle}"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </StackPanel>
+</Page>

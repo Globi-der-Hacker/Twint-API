@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WinTwint (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WinTwint (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

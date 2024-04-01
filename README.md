@@ -118,6 +118,7 @@ string privateCustomerUuid = "89954CD1-6175-4E0B-94C4-2E7299D7002A";
 var response = await _api_.GetToken(deviceId, devicePassword, deviceUuid, pin, privateCustomerUuid);
 ```
 
+Damit wird ein **POST** Request an folgende URL gesendet:
 ```
 https://app.issuer.twint.ch/tokens/v2/jwt/privatecustomer/
 {

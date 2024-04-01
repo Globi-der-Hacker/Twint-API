@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WinTwint.RegistrationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinTwint"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+       
+    <StackPanel Orientation="Vertical" Margin="20" Spacing="10">
+        <TextBlock Text="Registrierung" Style="{StaticResource TitleTextBlockStyle}"/>
+        <Border BorderThickness="1" BorderBrush="LightGray" Background="#fafafa" CornerRadius="5" Padding="10">
+            <StackPanel Orientation="Vertical" Margin="20" HorizontalAlignment="Left" Spacing="5">
+                <TextBlock Text="Telefonnummer:" FontSize="18" Foreground="Black" />
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <TextBox x:Name="txtNumber" Width="300" MaxLength="20" TextChanging="txtNumber_TextChanging" TextChanged="txtNumber_TextChanged"/>
+                    <Button x:Name="btnVerify" Content="Prüfen" Click="btnVerify_Click" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border BorderThickness="1" BorderBrush="LightGray" Background="#fafafa" CornerRadius="5" Padding="10">
+            <StackPanel Orientation="Vertical" Margin="20" HorizontalAlignment="Left" Spacing="5">
+                <TextBlock Text="TWINT Code:" FontSize="18" Foreground="Black" />
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <TextBox x:Name="txtCode" Width="300" MaxLength="5" TextChanging="txtCode_TextChanging" />
+                    <Button x:Name="btnVerifyCode" Content="Prüfen" Click="btnVerifyCode_Click" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border BorderThickness="1" BorderBrush="LightGray" Background="#fafafa" CornerRadius="5" Padding="10">
+            <StackPanel Orientation="Vertical" Margin="20" HorizontalAlignment="Left" Spacing="5">
+                <TextBlock Text="TWINT Pin:" FontSize="18" Foreground="Black" />
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <TextBox x:Name="txtPin" Width="300" MaxLength="6" TextChanging="txtPin_TextChanging" />
+                    <Button x:Name="btnVerifyPin" Content="Prüfen" Click="btnVerifyPin_Click" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btnDelete" Click="btnDelete_Click">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Glyph="&#xE7BA;" Margin="0,0,10,0" />
+                    <TextBlock Text="Registrierung löschen" />
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnCancel" Content="Abbrechen" Click="btnCancel_Click" />
+        </StackPanel>
+    </StackPanel>
+</Page>
