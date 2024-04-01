@@ -1,6 +1,6 @@
 # Twint-API
 
-[!CAUTION]
+> [!CAUTION]
 > Es handelt sich hier nicht um eine offizielle API der TWINT AG.
 
 ## Was kann die API und was nicht?
