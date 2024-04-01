@@ -97,7 +97,7 @@ https://app.issuer.twint.ch/private/routing/v1/reboard
 }
 ```
 
-Man beachte, dass die Zertifikate (ohne privaten Schlüssel) base64-codiert im PEM Format angegeben werden. Beim "fingerprint" handelt es sich jeweils um den SHA256 Hash des öffentlichen Schlüssels.
+Man beachte, dass die Zertifikate (ohne privaten Schlüssel) im PEM Format angegeben werden. Beim "fingerprint" handelt es sich jeweils um den SHA256 Hash des öffentlichen Schlüssels, formatiert als HEX-String.
 
 Als Antwort erhält man eine Datenstruktur, aus der wir uns die Werte für **privateCustomerUuid**, **deviceUuid** und **devicePassword** merken müssen:
 ```JSON
