@@ -1,4 +1,4 @@
 # Twint-API
 Twint payment API
 
-YO!
+## Was kann die API und was nicht?
