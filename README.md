@@ -39,7 +39,7 @@ string tan = "12345";
 await _api_.CompleteVerifyPhoneNumber(tan);
 ```
 
-Damit wird eine **POST** Request mit dem Code im JSON Body an folgende URL gesendet:
+Damit wird eine **POST** Request mit dem Code im JSON Body abgesetzt:
 ```JSON
 https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber
 {
@@ -157,7 +157,7 @@ var response = await _api.GetBalance();
 ```
 
 Der **GET** Request im Hintergrund (das JWT-Token muss im Bearer Header mitgesendet werden):
-```
+```JSON
 https://app.issuer.twint.ch/smartphone/service/v8/privateCustomers/account
 ```
 
@@ -183,7 +183,7 @@ var orders = await _api.GetOrders();
 
 Optional kann das Ergebnis durch die Angabe eines Datums oder der maximalen Anzahl Transaktionen begrenzt werden.
 Der **GET** Request im Hintergrund:
-```
+```JSON
 https://app.scheme.twint.ch/smartphone/service/v26/orders?since=2024-01-01T00%3A00%3A00Z&limit=300
 ```
 
