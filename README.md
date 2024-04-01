@@ -50,8 +50,8 @@ https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber
 }
 ```
 
-Im nächsten Schritt muss auf dem Gerät eine zufällige Geräte-Id, ein selbstsigniertes CA-Zertifikat und ein damit signiertes Signging-Zertifikat erstellt werden.
-ausserdem benötigen wir den PIN mit dem das bestehende Twint-Konto geschützt ist (im Beispiel unten 123456). Die Zertifikate werden später benötigt um Transaktionen zu signieren.
+Im nächsten Schritt muss eine zufällige Geräte-Id, ein selbstsigniertes CA-Zertifikat und ein damit signiertes Signging-Zertifikat erstellt werden. Die Geräte-Id müssen wir uns merken (bzw. abspeichern), da sie später noch benötigt wird.
+Ausserdem benötigen wir die PIN mit dem das bestehende Twint-Konto geschützt ist (im Beispiel unten 123456).
 
 ```c#
 byte[] randomBytes = new byte[8];
