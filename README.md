@@ -13,7 +13,7 @@ Um die Beispiele zu erstellen, wird VisualStudio 2022 und .NET 8 benötigt.
 
 ## Onboarding
 Um ein bestehendes Twint Prepaid-Konto zu verknüpfen sind folgende Schritte notwendig:
-```
+```c#
 var _api = new TwintApi.TwintApi();
 _api.StartVerifyPhoneNumber("+41791112233");
 ```
@@ -25,7 +25,7 @@ https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber?phoneNumber=%2B
 
 Mit dem über SMS empfangenen Code muss die Telefonnummer verifiziert werden:
 
-```
+```c#
 string tan = "12345";
 _api_.CompleteVerifyPhoneNumber(tan);
 ```
