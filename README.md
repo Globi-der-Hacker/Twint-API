@@ -25,7 +25,7 @@ var _api = new TwintApi.TwintApi();
 await _api.StartVerifyPhoneNumber("+41791112233");
 ```
 
-Im Hintergrund wird ein **GET** Request mit der Telefonnummer an folgende URL gesendet:
+Im Hintergrund wird ein **GET** Request mit der Telefonnummer an folgende URL abgesetzt:
 ```
 https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber?phoneNumber=%2B41791112233
 ```
@@ -44,7 +44,6 @@ Damit wird eine **POST** Request mit dem Code im JSON Body abgesetzt:
 https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber
 ```
 ```JSON
-https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber
 {
   "tan": "12345"
 }
@@ -76,10 +75,12 @@ var response = await _api.Reboard(
 );
 ```
 
-Dadurch wird ein **POST** Request an folgende URL abgesetzt:
+Dadurch wird ein **POST** Request mit JSON Body an folgende URL abgesetzt:
 
-```JSON
+```
 https://app.issuer.twint.ch/private/routing/v1/reboard
+```
+```JSON
 {
   "caCert": {
     "certificate": "-----BEGIN CERTIFICATE-----\nMIIB3z...\n-----END CERTIFICATE-----\n",
@@ -121,9 +122,11 @@ string privateCustomerUuid = "89954CD1-6175-4E0B-94C4-2E7299D7002A";
 var response = await _api_.GetToken(deviceId, devicePassword, deviceUuid, pin, privateCustomerUuid);
 ```
 
-Damit wird ein **POST** Request an folgende URL gesendet:
-```JSON
+Damit wird ein **POST** Request mit JSON Body an folgende URL gesendet:
+```
 https://app.issuer.twint.ch/tokens/v2/jwt/privatecustomer/
+```
+```JSON
 {
   "deviceId": "8b22a56369365885",
   "devicePassword": "dd([)62$+35*(4f]9]$+",
@@ -160,7 +163,7 @@ var response = await _api.GetBalance();
 ```
 
 Der **GET** Request im Hintergrund (das JWT-Token muss im Bearer Header mitgesendet werden):
-```JSON
+```
 https://app.issuer.twint.ch/smartphone/service/v8/privateCustomers/account
 ```
 
@@ -186,7 +189,7 @@ var orders = await _api.GetOrders();
 
 Optional kann das Ergebnis durch die Angabe eines Datums oder der maximalen Anzahl Transaktionen begrenzt werden.
 Der **GET** Request im Hintergrund:
-```JSON
+```
 https://app.scheme.twint.ch/smartphone/service/v26/orders?since=2024-01-01T00%3A00%3A00Z&limit=300
 ```
 
@@ -247,8 +250,10 @@ await App.Current.TwintApi.Send(
 
 Der **POST** Request im Hintergrund:
 
-```JSON
+```
 https://app.scheme.twint.ch/smartphone/service/v26/orders/p2p/send
+```
+```JSON
 {
   "amount": {
     "amount": 0.5,
