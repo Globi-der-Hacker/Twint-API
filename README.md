@@ -1,7 +1,7 @@
 # Twint-API
 
 > [!CAUTION]
-> Es handelt sich hier nicht um eine offizielle API der TWINT AG.
+> Es handelt sich hier nicht um eine offizielle API der TWINT AG. Die beschriebenen Aufrufe wurden durch reverse-engineering der Twint Mobile-App ermittelt und können jederzeit ändern.
 
 ## Was kann die API und was nicht?
 Mit Hilfe dieser API kann ein **bestehendes** Twint Prepaid-Konto mit einer eigenen Applikation verknüpft werden. Danach können der aktuelle Kontostand sowie die letzten
