@@ -40,7 +40,7 @@ await _api_.CompleteVerifyPhoneNumber(tan);
 ```
 
 Damit wird eine **POST** Request mit dem Code im JSON Body an folgende URL gesendet:
-```
+```JSON
 https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber
 {
   "tan": "12345"
@@ -75,7 +75,7 @@ var response = await _api.Reboard(
 
 Dadurch wird ein **POST** Request an folgende URL abgesetzt:
 
-```
+```JSON
 https://app.issuer.twint.ch/private/routing/v1/reboard
 {
   "caCert": {
@@ -96,7 +96,7 @@ https://app.issuer.twint.ch/private/routing/v1/reboard
 Man beachte, dass die Zertifikate (ohne privaten Schlüssel) base64-codiert im PEM Format angegeben werden. Beim "fingerprint" handelt es sich jeweils um den SHA256 Hash des öffentlichen Schlüssels.
 
 Als Antwort erhält man eine Datenstruktur, aus der wir uns die Werte für **privateCustomerUuid**, **deviceUuid** und **devicePassword** merken müssen:
-```
+```JSON
 {
   "privateCustomerUuid": "89954CD1-6175-4E0B-94C4-2E7299D7002A",
   "deviceUuid": "46C54FEE-C9EB-4DCD-9463-D29A6CE276D2",
@@ -119,7 +119,7 @@ var response = await _api_.GetToken(deviceId, devicePassword, deviceUuid, pin, p
 ```
 
 Damit wird ein **POST** Request an folgende URL gesendet:
-```
+```JSON
 https://app.issuer.twint.ch/tokens/v2/jwt/privatecustomer/
 {
   "deviceId": "8b22a56369365885",
@@ -131,7 +131,7 @@ https://app.issuer.twint.ch/tokens/v2/jwt/privatecustomer/
 ```
 
 In der Antwort erhalten wir ein JWT-Token welches für alle weiteren API-Aufrufe benötigt wird:
-```
+```JSON
 {
   "category": "CAT3A",
   "lockState": "UNLOCKED",
@@ -162,7 +162,7 @@ https://app.issuer.twint.ch/smartphone/service/v8/privateCustomers/account
 ```
 
 Die Antwort enthält den Kontostand:
-```
+```JSON
 {
   "balance": {
     "amount": 1,
@@ -188,7 +188,7 @@ https://app.scheme.twint.ch/smartphone/service/v26/orders?since=2024-01-01T00%3A
 ```
 
 Die Antwort ist eine Datenstruktur, die im Element "entries" eine Liste von Transaktionen enthält:
-```
+```JSON
 {
   "entries": [
     {
@@ -225,7 +225,7 @@ Das Senden von Geld benötigt natürlich auch ein gültiges Login-Token. Zusätz
 
 ```c#
 decimal amount = 1.00;
-string message = "Hello World!";
+string message = "❤️";
 string receiverNumber = "+41791112233";
 string senderFirstName = "Globi";
 string senderLastName = "der Hacker";
@@ -244,7 +244,7 @@ await App.Current.TwintApi.Send(
 
 Der **POST** Request im Hintergrund:
 
-```
+```JSON
 https://app.scheme.twint.ch/smartphone/service/v26/orders/p2p/send
 {
   "amount": {
