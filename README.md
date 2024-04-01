@@ -40,6 +40,9 @@ await _api_.CompleteVerifyPhoneNumber(tan);
 ```
 
 Damit wird eine **POST** Request mit dem Code im JSON Body abgesetzt:
+```
+https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber
+```
 ```JSON
 https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber
 {
