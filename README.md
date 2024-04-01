@@ -55,7 +55,7 @@ Ausserdem benötigen wir die PIN mit dem das bestehende Twint-Konto geschützt i
 
 ```c#
 byte[] randomBytes = new byte[8];
-u (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
 {
   rng.GetBytes(randomBytes);
 }
