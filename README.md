@@ -1,8 +1,5 @@
 # Twint-API
-
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
-
-![TWINT](https://www.twint.ch/content/themes/twint/images/twint-logo.svg)
+![TWINT](twint-logo.svg)
 
 > [!CAUTION]
 > Es handelt sich hier nicht um eine offizielle API der TWINT AG. Die beschriebenen Aufrufe wurden durch reverse-engineering der Twint Mobile-App ermittelt und können jederzeit ändern.
