@@ -31,7 +31,7 @@ await _api.StartVerifyPhoneNumber("+41791112233");
 
 In the background, a **GET** request is sent with the phone number to the following URL:
 
-```http
+```
 https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber?phoneNumber=%2B41791112233
 ```
 
@@ -46,7 +46,7 @@ await _api_.CompleteVerifyPhoneNumber(tan);
 
 This sends a **POST** request with the code in the JSON body:
 
-```http
+```
 https://app.issuer.twint.ch/private/routing/v1/verifyPhoneNumber
 ```
 
@@ -84,7 +84,7 @@ var response = await _api.Reboard(
 
 This sends a **POST** request with JSON body to the following URL:
 
-```http
+```
 https://app.issuer.twint.ch/private/routing/v1/reboard
 ```
 
@@ -134,7 +134,7 @@ var response = await _api_.GetToken(deviceId, devicePassword, deviceUuid, pin, p
 
 This sends a **POST** request with JSON body to the following URL:
 
-```http
+```
 https://app.issuer.twint.ch/tokens/v2/jwt/privatecustomer/
 ```
 
@@ -178,7 +178,7 @@ var response = await _api.GetBalance();
 
 The **GET** request in the background (the JWT token must be sent in the bearer header):
 
-```http
+```
 https://app.issuer.twint.ch/smartphone/service/v8/privateCustomers/account
 ```
 
@@ -208,7 +208,7 @@ Optionally, the result can be limited by specifying a date or the maximum number
 
 The **GET** request in the background:
 
-```http
+```
 https://app.scheme.twint.ch/smartphone/service/v26/orders?since=2024-01-01T00%3A00%3A00Z&limit=300
 ```
 
@@ -271,7 +271,7 @@ await App.Current.TwintApi.Send(
 
 The **POST** request in the background:
 
-```http
+```
 https://app.scheme.twint.ch/smartphone/service/v26/orders/p2p/send
 ```
 
