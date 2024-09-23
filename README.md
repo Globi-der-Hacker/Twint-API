@@ -1,4 +1,6 @@
 # Twint-API
+English version [here!](README%20English.md)
+
 ![TWINT](twint-logo.svg)
 
 > [!CAUTION]
